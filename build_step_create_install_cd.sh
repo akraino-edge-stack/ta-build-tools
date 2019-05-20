@@ -24,7 +24,7 @@ tmp=$WORKTMP/install_cd
 iso_build_dir=$tmp/build
 
 input_image=$(readlink -f ${1:-$WORKTMP/goldenimage/$GOLDEN_IMAGE_NAME})
-output_image_path=${2:-$RESULT_IMAGES_DIR/rec.iso}
+output_image_path=${2:-$RESULT_IMAGES_DIR/install.iso}
 output_bootcd_path=${3:-$RESULT_IMAGES_DIR/bootcd.iso}
 mkdir -p $tmp
 rm -rf $iso_build_dir
