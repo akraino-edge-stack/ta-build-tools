@@ -16,7 +16,7 @@
 # Use newer than the CentOS stock diskimage-builder via "cloud" repo
 FROM centos:7.5.1804
 RUN \
-    yum-config-manager --add-repo http://mirror.centos.org/centos/7/cloud/x86_64/openstack-queens/ && \
+    yum-config-manager --add-repo http://mirror.centos.org/centos/7/cloud/x86_64/openstack-stein/ && \
     yum install --nogpgcheck -y diskimage-builder \
         git \
         python \
@@ -29,5 +29,7 @@ RUN \
         sudo \
         e2fsprogs \
         xfsprogs
+COPY dummy-bin /usr/sbin/semanage
+COPY dummy-bin /usr/sbin/runcon
 
 WORKDIR /work
