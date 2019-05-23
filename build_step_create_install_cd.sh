@@ -57,7 +57,7 @@ pushd $iso_build_dir
 # Get files needed for generating CD image.
 wget_dir ${cd_efi_dir}/
 wget_dir ${cd_images_dir}/
-rm -rf images/boot.iso
+rm -f images/boot.iso
 sync
 wget_dir ${cd_isolinux_dir}/
 chmod +w -R isolinux/ EFI/ images/
@@ -78,8 +78,12 @@ popd
 
 pushd $tmp
 
+# Enable sudo for Jenkins execution
+_sudo=""
+[ "$USER" == "jenkins" ] && _sudo=sudo
+
  # Copy latest kernel and initrd-provisioning from boot dir
-virt-copy-out -a $input_image /boot/ ./
+$_sudo virt-copy-out -a $input_image /boot/ ./
 chmod u+w boot/
 rm -f $iso_build_dir/isolinux/vmlinuz $iso_build_dir/isolinux/initrd.img
 KVER=`ls -lrt boot/vmlinuz-* |grep -v rescue |tail -n1 |awk -F 'boot/vmlinuz-' '{print $2}'`

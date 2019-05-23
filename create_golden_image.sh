@@ -24,7 +24,7 @@ BASE_IMAGE_URL=${BASE_IMAGE_URL:-$(_read_build_config DEFAULT base_image)}
 CENTOS_SNAP=${CENTOS_SNAP:-$(_read_build_config DEFAULT centos_reposnap)}
 
 BASE_IMAGE_NAME=`echo $BASE_IMAGE_URL | awk -F "/" '{print $NF}'`
-BASE_IMAGE_SIZE="8GiB"
+BASE_IMAGE_SIZE="6GiB"
 
 wget_args=""
 [ -n "$GOLDEN_BASE_IMAGE_FETCH_USER" ] && wget_args="$wget_args --http-user=$GOLDEN_BASE_IMAGE_FETCH_USER"
@@ -44,6 +44,7 @@ fetch_image() {
 fetch_image $BASE_IMAGE_URL
 cp $MANIFEST_PATH/packages.yaml $scriptdir/dib_elements/myproduct/package-installs.yaml
 
+df -h
 DIB_DEBUG_TRACE=1 \
   FS_TYPE=xfs \
   PACKAGES_TO_INSTALL="$(_get_package_list install)" \
