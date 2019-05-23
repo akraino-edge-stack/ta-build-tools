@@ -28,6 +28,7 @@ RUN \
         parted \
         sudo \
         e2fsprogs \
-        xfsprogs
+        xfsprogs \
+        policycoreutils-python
 
 WORKDIR /work
