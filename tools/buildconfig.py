@@ -13,15 +13,19 @@
 # limitations under the License.
 
 import ConfigParser
+import platform
 
 from tools.statics import BUILD_CONFIG_PATH
 
 
 class BuildConfigParser(ConfigParser.ConfigParser):
+    def optionxform_arch(self, option):
+        return str(option).replace('#ARCH#', platform.machine())
+
     def __init__(self, ini_file=BUILD_CONFIG_PATH):
         ConfigParser.ConfigParser.__init__(self)
         self.ini_file = ini_file
-        self.optionxform = str
+        self.optionxform = self.optionxform_arch
         self.read(self.ini_file)
 
     def items(self, section):  # pylint: disable=arguments-differ
