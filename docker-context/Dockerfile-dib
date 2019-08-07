@@ -14,12 +14,19 @@
 
 
 # Use newer than the CentOS stock diskimage-builder via "cloud" repo
-FROM centos:7.5.1804
+FROM centos:7
 RUN \
-    yum-config-manager --add-repo http://mirror.centos.org/centos/7/cloud/x86_64/openstack-queens/ && \
-    yum install --nogpgcheck -y diskimage-builder \
+    if [ "$(uname -m)" = aarch64 ]; then \
+        REPO_URI=http://mirror.centos.org/altarch/7/cloud/aarch64/openstack-queens/; \
+        EXTRA_RPM="gdisk dosfstools util-linux qemu-img"; \
+    else \
+        REPO_URI=http://mirror.centos.org/centos/7/cloud/x86_64/openstack-queens/; \
+    fi && \
+    yum-config-manager --add-repo $REPO_URI && \
+    yum install --nogpgcheck -y \
         git \
         python \
+        python-pip \
         wget \
         which \
         findutils \
@@ -28,7 +35,10 @@ RUN \
         parted \
         sudo \
         e2fsprogs \
-        xfsprogs
+        xfsprogs \
+        ${EXTRA_RPM:-} && \
+    pip install git+https://github.com/openstack/diskimage-builder && \
+    yum remove -y python-pip
 RUN find -name 99-selinux-fixfiles-restore -exec rm {} \;
 
 WORKDIR /work
