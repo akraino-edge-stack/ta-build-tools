@@ -80,7 +80,12 @@ pushd $tmp
 
  # Copy latest kernel and initrd-provisioning from boot dir
 export LIBGUESTFS_BACKEND=direct
-virt-copy-out -a $input_image /boot/ ./
+#virt-copy-out -a $input_image /boot/ ./
+sudo yum install qemu-img
+sudo modprobe nbd max_part=8
+sudo qemu-nbd --connect=/dev/nbd0 /boot/$input_image
+sudo mount /dev/nbd0p1 ./
+
 chmod u+w boot/
 rm -f $iso_build_dir/isolinux/vmlinuz $iso_build_dir/isolinux/initrd.img
 KVER=`ls -lrt boot/vmlinuz-* |grep -v rescue |tail -n1 |awk -F 'boot/vmlinuz-' '{print $2}'`
@@ -114,4 +119,6 @@ echo "Clean up to preserve workspace footprint"
 rm -f $iso_build_dir/$(basename ${input_image})
 rm -rf $iso_build_dir/rpms
 
+sudo umount ./
+sudo qemu-nbd --disconnect /dev/nbd0
 popd
