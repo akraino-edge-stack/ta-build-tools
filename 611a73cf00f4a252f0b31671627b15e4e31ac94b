@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0be65a0d_7dd10c2b",
+        "filename": "docker-context/Dockerfile-dib",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 204
+      },
+      "writtenOn": "2019-09-05T07:38:27Z",
+      "side": 1,
+      "message": "In my opinion it is most often good to freeze the version used if possible. Couple issues using always the latest available are:\n - if the latest suddenly stops working who shall notice and fix it?\n - it is easier to see what centos version is actually being used\n\nSo I would put here instead: 7.6.1810",
+      "revId": "611a73cf00f4a252f0b31671627b15e4e31ac94b",
+      "serverId": "4cada01b-0314-4fe0-84a1-f9ddc89863f9",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7716efae_8b37ab92",
+        "filename": "docker-context/Dockerfile-dib",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 204
+      },
+      "writtenOn": "2019-09-05T07:38:27Z",
+      "side": 1,
+      "message": "As the DIB version was earlier tied to the distribution version used it was possible to say directly from the code what version of DIB the project uses. As the DIB is the main tool here I would keep it versioned same way as the docker image so that changes to the product can be controlled.\n\nI would add here the current latest version:\npip install git+https://github.com/openstack/diskimage-builder@2.26.1",
+      "range": {
+        "startLine": 40,
+        "startChar": 16,
+        "endLine": 40,
+        "endChar": 66
+      },
+      "revId": "611a73cf00f4a252f0b31671627b15e4e31ac94b",
+      "serverId": "4cada01b-0314-4fe0-84a1-f9ddc89863f9",
+      "unresolved": true
+    }
+  ]
+}
