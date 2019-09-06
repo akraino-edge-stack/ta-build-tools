@@ -80,7 +80,20 @@ pushd $tmp
 
  # Copy latest kernel and initrd-provisioning from boot dir
 export LIBGUESTFS_BACKEND=direct
-virt-copy-out -a $input_image /boot/ ./
+qemu-img convert $input_image guest-image.raw
+myloop=$(sudo losetup -fP --show guest-image.raw)
+mkdir mnt1
+mkdir mnt2
+sudo mount -o loop ${myloop}p1 mnt1/
+sudo mount -o loop ${myloop}p2 mnt2/
+sudo rsync -avA mnt2/ boot
+sudo rsync -avA mnt1/ boot/efi/
+sudo chown -R $(id -u):$(id -g) boot
+sudo umount mnt1
+sudo umount mnt2
+sudo losetup -d ${myloop}
+rm -f guest-image.raw
+
 chmod u+w boot/
 rm -f $iso_build_dir/isolinux/vmlinuz $iso_build_dir/isolinux/initrd.img
 KVER=`ls -lrt boot/vmlinuz-* |grep -v rescue |tail -n1 |awk -F 'boot/vmlinuz-' '{print $2}'`
