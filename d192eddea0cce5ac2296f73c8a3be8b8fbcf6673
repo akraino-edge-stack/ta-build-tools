@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6d026e0_02d9e7d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 43
+      },
+      "writtenOn": "2019-09-06T12:48:42Z",
+      "side": 1,
+      "message": "I think it would be a good idea to include a bit of detail in the commit message to record the fact that we\u0027re doing this at least partially to try to work around CI failures related to the virt-copy-out command and possible issues with support for nested virtualization in the LF CI system.",
+      "revId": "d192eddea0cce5ac2296f73c8a3be8b8fbcf6673",
+      "serverId": "4cada01b-0314-4fe0-84a1-f9ddc89863f9",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05a648c3_c465c773",
+        "filename": "build_step_create_install_cd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 43
+      },
+      "writtenOn": "2019-09-06T12:48:42Z",
+      "side": 1,
+      "message": "Does this work? I sometimes forget that I have another terminal window open and cd\u0027d into a mounted partition and I get an error trying to unmount because a process is using the partition. I would think that trying to unmount the current directory would fail, although I\u0027ve never tried exactly this syntax.",
+      "revId": "d192eddea0cce5ac2296f73c8a3be8b8fbcf6673",
+      "serverId": "4cada01b-0314-4fe0-84a1-f9ddc89863f9",
+      "unresolved": false
+    }
+  ]
+}
