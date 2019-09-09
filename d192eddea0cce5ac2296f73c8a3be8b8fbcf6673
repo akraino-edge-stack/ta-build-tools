@@ -33,6 +33,29 @@
       "revId": "d192eddea0cce5ac2296f73c8a3be8b8fbcf6673",
       "serverId": "4cada01b-0314-4fe0-84a1-f9ddc89863f9",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eec01cc2_805c685d",
+        "filename": "build_step_create_install_cd.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 204
+      },
+      "writtenOn": "2019-09-09T08:26:08Z",
+      "side": 1,
+      "message": "I assume these lines are here by mistake?",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 36
+      },
+      "revId": "d192eddea0cce5ac2296f73c8a3be8b8fbcf6673",
+      "serverId": "4cada01b-0314-4fe0-84a1-f9ddc89863f9",
+      "unresolved": true
     }
   ]
 }
