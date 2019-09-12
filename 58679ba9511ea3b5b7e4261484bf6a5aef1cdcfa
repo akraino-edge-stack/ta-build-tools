@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "181a1a88_471cc3a3",
+        "filename": "tools/script/create_rpm_data.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 183
+      },
+      "writtenOn": "2019-09-12T09:23:29Z",
+      "side": 1,
+      "message": "could combine the two conditions, and maybe create a LOCAL_REPOS constant (if rpm[\u0027From repo\u0027] in LOCAL_REPOS return \u0027localrepo\u0027)",
+      "revId": "58679ba9511ea3b5b7e4261484bf6a5aef1cdcfa",
+      "serverId": "4cada01b-0314-4fe0-84a1-f9ddc89863f9",
+      "unresolved": true
+    }
+  ]
+}
