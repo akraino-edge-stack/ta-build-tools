@@ -19,5 +19,15 @@ fi
 set -eu
 set -o pipefail
 
-sed -i -e "s/console=ttyS0,115200/console=ttyS1,115200/g" /etc/default/grub
+sed -i -e "s/console=ttyS0,115200/console=ttyS1,115200 console=ttyAMA0,115200/g" /etc/default/grub
 grub2-mkconfig -o /boot/grub2/grub.cfg
+
+# DIB only handles grub.cfg in /boot/grub2/grub.cfg, so we handle the UEFI grub.cfg explicitly
+for efi_boot_dir in \
+    /boot/efi/EFI/BOOT \
+    /boot/efi/EFI/centos
+do
+    if [ -d "${efi_boot_dir}" ]; then
+        cp -f /boot/grub2/grub.cfg "${efi_boot_dir}"
+    fi
+done
