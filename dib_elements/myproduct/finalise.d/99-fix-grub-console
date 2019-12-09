@@ -19,5 +19,14 @@ fi
 set -eu
 set -o pipefail
 
-sed -i -e "s/console=ttyS0,115200/console=ttyS1,115200/g" /etc/default/grub
-grub2-mkconfig -o /boot/grub2/grub.cfg
+sed -i -e "s/console=ttyS0,115200/console=ttyS1,115200 console=ttyAMA0,115200/g" /etc/default/grub
+
+for cfg in \
+    /boot/efi/EFI/BOOT/grub.cfg \
+    /boot/efi/EFI/centos/grub.cfg \
+    /boot/grub2/grub.cfg
+do
+    if [ -e "${cfg}" ]; then
+        grub2-mkconfig -o "${cfg}"
+    fi
+done
