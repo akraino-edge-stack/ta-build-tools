@@ -16,6 +16,24 @@
       "revId": "c8705ed9246b5c2d9d147cac9651550e7eabe94b",
       "serverId": "4cada01b-0314-4fe0-84a1-f9ddc89863f9",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b3f554d_4513e22f",
+        "filename": "dib_elements/myproduct/finalise.d/99-fix-grub-console",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 137
+      },
+      "writtenOn": "2019-12-09T15:56:00Z",
+      "side": 1,
+      "message": "The kernel figures out which consoles exist and uses all that apply.\nHaving something like `console\u003dtty0 console\u003dttyS0 console\u003dttyS1 console\u003dttyAMA0` on a system that only has `tty0` and `ttyS1` will only spawn console on those; while on a system that only has `ttyAMA0` will only spawn a console on that.\nHence why I don\u0027t understand why everywhere in the TA code we replace the ttyS0 with ttyS1 instead of having both passed to the kernel and letting it figure out what to use.",
+      "parentUuid": "a49000b3_06169104",
+      "revId": "c8705ed9246b5c2d9d147cac9651550e7eabe94b",
+      "serverId": "4cada01b-0314-4fe0-84a1-f9ddc89863f9",
+      "unresolved": false
     }
   ]
 }
