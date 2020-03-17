@@ -60,8 +60,8 @@ if [ -e "${dib_patch}" ] && ! patch -R --dry-run "${dib_file}" "${dib_patch}"; t
     patch "${dib_file}" "${dib_patch}"
 fi
 
-docker build -f $scriptdir/docker-context/Dockerfile-dib -t dib $scriptdir/docker-context
-docker build -f $scriptdir/docker-context/Dockerfile-buildtools -t buildtools $scriptdir/docker-context
+docker build --network=host -f $scriptdir/docker-context/Dockerfile-dib -t dib $scriptdir/docker-context
+docker build --network=host -f $scriptdir/docker-context/Dockerfile-buildtools -t buildtools $scriptdir/docker-context
 
 # Create manifest RPM
 $LIBDIR/create_manifest_rpm.sh
