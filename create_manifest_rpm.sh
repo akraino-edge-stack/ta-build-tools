@@ -31,6 +31,7 @@ rpm_macros=$work/rpmmacros
 $scriptdir/mock2rpmbuild_config.py --mock-config $work/mock_config/mock.cfg --output-file-path $rpm_macros
 
 docker run --rm \
+    --network=host \
     -v $rpm_macros:/root/.rpmmacros \
     -v $work:/work \
     alpine:3.9.4 \

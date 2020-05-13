@@ -37,6 +37,7 @@ shift; shift
 input_mp=/input
 output_mp=/output
 docker run \
+  --network=host \
   --rm \
   -e PYTHONPATH=/work \
   -e BUILD_URL -e JENKINS_USERNAME -e JENKINS_TOKEN -e WORK \
@@ -58,6 +59,7 @@ docker run \
     $*
 
 docker run \
+  --network=host \
   --rm \
   -e PYTHONPATH=/work \
   -v $scriptdir:/work \
