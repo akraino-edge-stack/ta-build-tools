@@ -25,6 +25,7 @@ docker_dib_image=dib
 _load_docker_image $docker_dib_image
 
 docker run \
+  --network=host \
   --rm \
   --privileged \
   -v /dev:/dev \
