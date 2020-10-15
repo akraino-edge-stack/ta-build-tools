@@ -31,14 +31,16 @@ RUN \
         which \
         findutils \
         systemd-udev \
-        PyYAML \
         parted \
         sudo \
         e2fsprogs \
         xfsprogs \
         qemu-img \
         ${EXTRA_RPM:-} && \
+    pip install --upgrade pip && \
     pip install diskimage-builder==2.26.1 && \
+    pip install zipp && \
+    true && \
     yum remove -y python-pip
 RUN find -name 99-selinux-fixfiles-restore -exec rm {} \;
 
