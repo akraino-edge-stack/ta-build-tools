@@ -56,6 +56,6 @@ DIB_DEBUG_TRACE=1 \
   DIB_YUM_REPO_CONF="${REPO_FILES}/repositories.repo ${REPO_FILES}/localrepo.repo" \
   DIB_LOCAL_IMAGE=$WORKTMP/base-img/$BASE_IMAGE_NAME \
   ELEMENTS_PATH=$scriptdir/dib_elements/ \
-  /usr/bin/disk-image-create --root-label img-rootfs --image-size $BASE_IMAGE_SIZE vm centos7 selinux-permissive myproduct ${EXTRA_ELEMENTS:-} -o $TMP_GOLDEN_IMAGE
+  /usr/bin/disk-image-create --root-label img-rootfs --no-tmpfs --image-size $BASE_IMAGE_SIZE vm centos7 selinux-permissive myproduct ${EXTRA_ELEMENTS:-} -o $TMP_GOLDEN_IMAGE
 
 rm -rf $WORKTMP/base-img
